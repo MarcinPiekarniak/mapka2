@@ -1,0 +1,241 @@
+{"layers": [{
+  "id": "t9a5fxm",
+  "meta": {},
+  "visConfigSettings": {
+    "opacity": {
+      "type": "number",
+      "defaultValue": 0.8,
+      "label": "Opacity",
+      "isRanged": false,
+      "range": [
+        0,
+        1
+      ],
+      "step": 0.01,
+      "group": "color",
+      "property": "opacity"
+    },
+    "thickness": {
+      "type": "number",
+      "defaultValue": 2,
+      "label": "Stroke Width",
+      "isRanged": false,
+      "range": [
+        0,
+        100
+      ],
+      "step": 0.1,
+      "group": "stroke",
+      "property": "thickness"
+    },
+    "colorRange": {
+      "type": "color-range-select",
+      "defaultValue": {
+        "name": "Global Warming",
+        "type": "sequential",
+        "category": "Uber",
+        "colors": [
+          "#5A1846",
+          "#900C3F",
+          "#C70039",
+          "#E3611C",
+          "#F1920E",
+          "#FFC300"
+        ]
+      },
+      "label": "Color range",
+      "group": "color",
+      "property": "colorRange"
+    },
+    "radius": {
+      "type": "number",
+      "defaultValue": 10,
+      "label": "Radius",
+      "isRanged": false,
+      "range": [
+        0,
+        100
+      ],
+      "step": 0.1,
+      "group": "radius",
+      "property": "radius"
+    },
+    "sizeRange": {
+      "type": "number",
+      "defaultValue": [
+        0,
+        10
+      ],
+      "label": "Stroke Width Range",
+      "isRanged": true,
+      "range": [
+        0,
+        200
+      ],
+      "step": 0.1,
+      "group": "stroke",
+      "property": "sizeRange"
+    },
+    "radiusRange": {
+      "type": "number",
+      "defaultValue": [
+        0,
+        50
+      ],
+      "isRanged": true,
+      "range": [
+        0,
+        500
+      ],
+      "step": 0.1,
+      "label": "Radius Range",
+      "group": "radius",
+      "property": "radiusRange"
+    },
+    "heightRange": {
+      "type": "number",
+      "defaultValue": [
+        0,
+        500
+      ],
+      "label": "Height Scale",
+      "isRanged": true,
+      "range": [
+        0,
+        1000
+      ],
+      "step": 0.01,
+      "group": "height",
+      "property": "sizeRange"
+    },
+    "elevationScale": {
+      "type": "number",
+      "defaultValue": 5,
+      "label": "Elevation Scale",
+      "isRanged": false,
+      "range": [
+        0,
+        100
+      ],
+      "step": 0.1,
+      "group": "height",
+      "property": "elevationScale"
+    },
+    "hi-precision": {
+      "type": "boolean",
+      "defaultValue": false,
+      "label": "High Precision Rendering",
+      "group": "precision",
+      "property": "hi-precision",
+      "description": "High precision will result in slower performance"
+    },
+    "stroked": {
+      "type": "boolean",
+      "label": "Polygon Stroke",
+      "defaultValue": true,
+      "property": "stroked"
+    },
+    "filled": {
+      "type": "boolean",
+      "label": "Polygon Fill",
+      "defaultValue": false,
+      "property": "filled"
+    },
+    "enable3d": {
+      "type": "boolean",
+      "defaultValue": false,
+      "label": "Enable Height",
+      "group": "height",
+      "property": "enable3d",
+      "description": "Click button at top right of the map to switch to 3d view"
+    },
+    "wireframe": {
+      "type": "boolean",
+      "defaultValue": false,
+      "label": "Show Wireframe",
+      "property": "wireframe"
+    }
+  },
+  "config": {
+    "dataId": "moje",
+    "label": "SF Zip Geo",
+    "color": [
+      18,
+      147,
+      154
+    ],
+    "columns": {
+      "geojson": "_geojson"
+    },
+    "isVisible": true,
+    "isConfigActive": false,
+    "highlightColor": [
+      252,
+      242,
+      26
+    ],
+    "colorField": null,
+    "colorDomain": [
+      0,
+      1
+    ],
+    "colorScale": "quantile",
+    "sizeDomain": [
+      0,
+      1
+    ],
+    "sizeScale": "linear",
+    "sizeField": null,
+    "visConfig": {
+      "opacity": 1,
+      "thickness": 2,
+      "colorRange": {
+        "name": "Global Warming",
+        "type": "sequential",
+        "category": "Uber",
+        "colors": [
+          "#5A1846",
+          "#900C3F",
+          "#C70039",
+          "#E3611C",
+          "#F1920E",
+          "#FFC300"
+        ]
+      },
+      "radius": 10,
+      "sizeRange": [
+        0,
+        10
+      ],
+      "radiusRange": [
+        0,
+        50
+      ],
+      "heightRange": [
+        0,
+        500
+      ],
+      "elevationScale": 5,
+      "hi-precision": true,
+      "stroked": false,
+      "filled": true,
+      "enable3d": false,
+      "wireframe": false
+    },
+    "heightField": null,
+    "heightDomain": [
+      0,
+      1
+    ],
+    "heightScale": "linear",
+    "radiusField": null,
+    "radiusDomain": [
+      0,
+      1
+    ],
+    "radiusScale": "linear"
+  },
+  "dataToFeature": {},
+  "type": "geojson"
+}]
+}

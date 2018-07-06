@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "04_pas_startowy",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 18.566151777171608, 54.402920943761721 ], [ 18.566718193224098, 54.40308682274852 ], [ 18.569311569578723, 54.399546722420453 ], [ 18.568753245184123, 54.399362637203403 ], [ 18.566151777171608, 54.402920943761721 ] ] ] } }
+]
+}

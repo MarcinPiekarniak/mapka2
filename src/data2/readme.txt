@@ -1,0 +1,1 @@
+Tylko warstwy niezbêdne do testów - podstawa wizualizacyjna plus pola techniczne i zakres dozwolonego ruchu
