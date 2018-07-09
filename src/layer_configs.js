@@ -3,7 +3,7 @@ const LAYER_CONFIGS = [
     file: "json_01_teren_lotniska",
     color: [75, 178, 59],
   },
-  {
+  /*{
     file: "json_02_nawierzchnia_utwardzona",
     color: [168, 168, 168],
   },
@@ -127,7 +127,7 @@ const LAYER_CONFIGS = [
   {
     file: "json_27_miejsca_parkingowe",
     color: [255, 255, 255]
-  }
+  }*/
 ];
 
 export default LAYER_CONFIGS;

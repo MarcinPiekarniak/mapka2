@@ -28,7 +28,7 @@ import {replaceLoadDataModal} from './factories/load-data-modal';
 import sampleTripData from './data/sample-trip-data';
 import sampleGeojson from './data/sample-geojson.json';
 import sampleIconCsv, {config as savedMapConfig} from './data/sample-icon-csv';
-import {updateVisData, addDataToMap} from 'kepler.gl/actions';
+import {updateVisData, addDataToMap, removeLayer} from 'kepler.gl/actions';
 import Processors from 'kepler.gl/processors';
 import layerConfig from './layer.json';
 
@@ -36,64 +36,70 @@ import json_01_teren_lotniska from './data2/01_teren_lotniska.json';
 import json_02_nawierzchnia_utwardzona from './data2/02_nawierzchnia_utwardzona.json';
 import json_03_stanowiska_postojowe from './data2/03_stanowiska_postojowe.json';
 import json_04_pas_startowy from './data2/04_pas_startowy.json';
-import json_05_poziome_oznaczenia_pasa from './data2/05_poziome_oznaczenia_pasa.json';
-import json_06_linie_przerywane_pasa from './data2/06_linie_przerywane_pasa.json';
+//import json_05_poziome_oznaczenia_pasa from './data2/05_poziome_oznaczenia_pasa.json';
+//import json_06_linie_przerywane_pasa from './data2/06_linie_przerywane_pasa.json';
 import json_07_drogi_poza_obszarem_kolowania from './data2/07_drogi_poza_obszarem_kolowania.json';
 import json_08_drogi_w_obszarze_kolowania from './data2/08_drogi_w_obszarze_kolowania.json';
-import json_09a_oznakowanie_poziome_drogowe_przerywane_drobne from './data2/09a_oznakowanie_poziome_drogowe_przerywane_drobne.json';
-import json_09_oznakowanie_poziome_drogowe_przerywane from './data2/09_oznakowanie_poziome_drogowe_przerywane.json';
-import json_10_oznakowanie_poziome_drogowe_podwojne_linie from './data2/10_oznakowanie_poziome_drogowe_podwojne_linie.json';
-import json_11_oznakowanie_poziome_drogowe_gruba_linia from './data2/11_oznakowanie_poziome_drogowe_gruba_linia.json';
-import json_12_oznakowanie_poziome_drogowe_ciagle from './data2/12_oznakowanie_poziome_drogowe_ciagle.json';
-import json_13_linie_bezpieczenstwa from './data2/13_linie_bezpieczenstwa.json';
-import json_14_oznakowanie_poziome_ciemne from './data2/14_oznakowanie_poziome_ciemne.json';
-import json_15_oznakowanie_poziome_czarne_bez_ramki from './data2/15_oznakowanie_poziome_czarne_bez_ramki.json';
-import json_16_oznakowanie_poziome_zolte from './data2/16_oznakowanie_poziome_zolte.json';
+//import json_09a_oznakowanie_poziome_drogowe_przerywane_drobne from './data2/09a_oznakowanie_poziome_drogowe_przerywane_drobne.json';
+//import json_09_oznakowanie_poziome_drogowe_przerywane from './data2/09_oznakowanie_poziome_drogowe_przerywane.json';
+//import json_10_oznakowanie_poziome_drogowe_podwojne_linie from './data2/10_oznakowanie_poziome_drogowe_podwojne_linie.json';
+//import json_11_oznakowanie_poziome_drogowe_gruba_linia from './data2/11_oznakowanie_poziome_drogowe_gruba_linia.json';
+//import json_12_oznakowanie_poziome_drogowe_ciagle from './data2/12_oznakowanie_poziome_drogowe_ciagle.json';
+//import json_13_linie_bezpieczenstwa from './data2/13_linie_bezpieczenstwa.json';
+//import json_14_oznakowanie_poziome_ciemne from './data2/14_oznakowanie_poziome_ciemne.json';
+//import json_15_oznakowanie_poziome_czarne_bez_ramki from './data2/15_oznakowanie_poziome_czarne_bez_ramki.json';
+//import json_16_oznakowanie_poziome_zolte from './data2/16_oznakowanie_poziome_zolte.json';
 import json_17_tory_dla_pieszych from './data2/17_tory_dla_pieszych.json';
 import json_18_budynki from './data2/18_budynki.json';
-import json_19_miejsca_oczekiwania_linie_przerywane from './data2/19_miejsca_oczekiwania_linie_przerywane.json';
-import json_20_miejsca_oczekiwania_linie_ciagle from './data2/20_miejsca_oczekiwania_linie_ciagle.json';
-import json_21_krawedz_drogi_kolowania from './data2/21_krawedz_drogi_kolowania.json';
-import json_22_os_drogi_kolowania from './data2/22_os_drogi_kolowania.json';
-import json_23_os_drogi_kolowania_stanowiska_uzupelniajacego from './data2/23_os_drogi_kolowania_stanowiska_uzupelniajacego.json';
+//import json_19_miejsca_oczekiwania_linie_przerywane from './data2/19_miejsca_oczekiwania_linie_przerywane.json';
+//import json_20_miejsca_oczekiwania_linie_ciagle from './data2/20_miejsca_oczekiwania_linie_ciagle.json';
+//import json_21_krawedz_drogi_kolowania from './data2/21_krawedz_drogi_kolowania.json';
+//import json_22_os_drogi_kolowania from './data2/22_os_drogi_kolowania.json';
+//import json_23_os_drogi_kolowania_stanowiska_uzupelniajacego from './data2/23_os_drogi_kolowania_stanowiska_uzupelniajacego.json';
 import json_24_pola_techniczne from './data2/24_pola_techniczne.json';
 import json_25_strefy_zakazu_parkowania from './data2/25_strefy_zakazu_parkowania.json';
-import json_26_strefy_stanowisk_postojowych from './data2/26_strefy_stanowisk_postojowych.json';
-import json_27_miejsca_parkingowe from './data2/27_miejsca_parkingowe.json';
+//import json_26_strefy_stanowisk_postojowych from './data2/26_strefy_stanowisk_postojowych.json';
+//import json_27_miejsca_parkingowe from './data2/27_miejsca_parkingowe.json';
 
 import LAYER_CONFIGS from './layer_configs.js';
 
-
+/*
 const layers = {
   json_01_teren_lotniska,
   json_02_nawierzchnia_utwardzona,
   json_03_stanowiska_postojowe,
   json_04_pas_startowy,
-  json_05_poziome_oznaczenia_pasa,
-  json_06_linie_przerywane_pasa,
+  //json_05_poziome_oznaczenia_pasa,
+  //json_06_linie_przerywane_pasa,
   json_07_drogi_poza_obszarem_kolowania,
   json_08_drogi_w_obszarze_kolowania,
-  json_09a_oznakowanie_poziome_drogowe_przerywane_drobne,
-  json_09_oznakowanie_poziome_drogowe_przerywane,
-  json_10_oznakowanie_poziome_drogowe_podwojne_linie,
-  json_11_oznakowanie_poziome_drogowe_gruba_linia,
-  json_12_oznakowanie_poziome_drogowe_ciagle,
-  json_13_linie_bezpieczenstwa,
-  json_14_oznakowanie_poziome_ciemne,
-  json_15_oznakowanie_poziome_czarne_bez_ramki,
-  json_16_oznakowanie_poziome_zolte,
+  //json_09a_oznakowanie_poziome_drogowe_przerywane_drobne,
+  //json_09_oznakowanie_poziome_drogowe_przerywane,
+  //json_10_oznakowanie_poziome_drogowe_podwojne_linie,
+  //json_11_oznakowanie_poziome_drogowe_gruba_linia,
+  //json_12_oznakowanie_poziome_drogowe_ciagle,
+  //json_13_linie_bezpieczenstwa,
+  //json_14_oznakowanie_poziome_ciemne,
+  //json_15_oznakowanie_poziome_czarne_bez_ramki,
+  //json_16_oznakowanie_poziome_zolte,
   json_17_tory_dla_pieszych,
   json_18_budynki,
-  json_19_miejsca_oczekiwania_linie_przerywane,
-  json_20_miejsca_oczekiwania_linie_ciagle,
-  json_21_krawedz_drogi_kolowania,
-  json_22_os_drogi_kolowania,
-  json_23_os_drogi_kolowania_stanowiska_uzupelniajacego,
+  //json_19_miejsca_oczekiwania_linie_przerywane,
+  //json_20_miejsca_oczekiwania_linie_ciagle,
+  //json_21_krawedz_drogi_kolowania,
+  //json_22_os_drogi_kolowania,
+  //json_23_os_drogi_kolowania_stanowiska_uzupelniajacego,
   json_24_pola_techniczne,
   json_25_strefy_zakazu_parkowania,
-  json_26_strefy_stanowisk_postojowych,
-  json_27_miejsca_parkingowe,
+  //json_26_strefy_stanowisk_postojowych,
+  //json_27_miejsca_parkingowe,
+};*/
+
+const layers = {
+  json_01_teren_lotniska,
 };
+
+
 
 
 const KeplerGl = require('kepler.gl/components').injectComponents([
@@ -226,6 +232,165 @@ class App extends Component {
 
     // load icon data and config and process csv file
 
+    let dataToDisplay = [];
+    let geojsonsConfig = generateConfig();
+    for (let i = LAYER_CONFIGS.length - 1; i >= 0; --i) {
+      dataToDisplay.push({
+        info: {label: LAYER_CONFIGS[i].file, id: LAYER_CONFIGS[i].file},
+        data: Processors.processGeojson(layers[LAYER_CONFIGS[i].file])
+      });
+    }
+
+    this.props.dispatch(updateVisData(dataToDisplay, null, geojsonsConfig));
+
+    let newConfig = {}
+    newConfig.layers = geojsonsConfig.layers.concat(savedMapConfig.config.visState.layers);
+    newConfig.filters = [];
+    dataToDisplay.push({
+      info: {
+        label: 'Icon Data',
+        id: 'test_icon_data'
+      },
+      data: Processors.processCsvData(sampleIconCsv)
+    });
+
+/*
+    setTimeout(() => {
+      this.props.dispatch(
+        updateVisData(
+          dataToDisplay,
+          {
+            centerMap: true
+          },
+          newConfig
+        )
+      );
+    },5000);
+*/
+
+    setInterval(() => {
+    //  this.props.dispatch(removeLayer(0));
+
+      this.props.dispatch(
+        updateVisData(
+          dataToDisplay,
+          {
+            centerMap: true
+          },
+          newConfig
+        )
+      );
+      dataToDisplay[dataToDisplay.length - 1].data.rows[0][0] += 0.0001;
+      dataToDisplay[dataToDisplay.length - 1].data.rows[0][1] += 0.0001;
+
+    }, 3000);
+
+
+
+    /*
+    this.props.dispatch(
+      updateVisData(
+        [
+          {
+            info: {
+              label: 'Icon Data',
+              id: 'test_icon_data'
+            },
+            data: Processors.processCsvData(sampleIconCsv)
+          }
+        ],
+        {
+          centerMap: true
+        },
+        newConfig
+      )
+    );
+*/
+
+/*
+    this.props.dispatch(
+      updateVisData(
+        [
+          {
+            info: {
+              label: 'Icon Data',
+              id: 'test_icon_data'
+            },
+            data: Processors.processCsvData(sampleIconCsv)
+          }
+        ],
+        {
+          centerMap: true
+        },
+        savedMapConfig.config.visState
+      )
+    );
+*/
+/*
+    console.log('data');
+    console.log(Processors.processCsvData(sampleIconCsv));
+    let pointData = Processors.processCsvData(sampleIconCsv);
+    setInterval(() => {
+      this.props.dispatch(removeLayer(0));
+
+
+      pointData.rows[0][0] += 0.0001;
+      pointData.rows[0][1] += 0.0001;
+
+      pointData.rows[1][0] -= 0.0001;
+      pointData.rows[1][1] -= 0.0001;
+      console.log(pointData);
+      //setTimeout(() => {
+        this.props.dispatch(
+          updateVisData(
+            [
+              {
+                info: {
+                  label: 'Icon Data',
+                  id: 'test_icon_data'
+                },
+                data: pointData
+              }
+            ],
+            {
+              centerMap: false
+            },
+            //savedMapConfig.config.visState
+          )
+        );
+      //}, 500);
+
+
+    }, 1000);
+*/
+
+
+
+
+
+/*
+    this.props.dispatch(
+      addDataToMap({
+        datasets: [
+          {
+            info: {
+              label: 'Icon Data',
+              id: 'test_icon_data'
+            },
+            data: Processors.processCsvData(sampleIconCsv)
+          }
+        ],
+        options: {
+          centerMap: true
+        },
+        config: savedMapConfig
+      })
+    );
+*/
+
+
+
+
     /*
     this.props.dispatch(
       addDataToMap({
@@ -263,16 +428,7 @@ class App extends Component {
       );*/
 
 
-     let dataToDisplay = [];
 
-     for (let i = LAYER_CONFIGS.length - 1; i >= 0; --i) {
-       dataToDisplay.push({
-         info: {label: LAYER_CONFIGS[i].file, id: LAYER_CONFIGS[i].file},
-         data: Processors.processGeojson(layers[LAYER_CONFIGS[i].file])
-       });
-     }
-
-     this.props.dispatch(updateVisData(dataToDisplay, null, generateConfig()));
 
 
 
