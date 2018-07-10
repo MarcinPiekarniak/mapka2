@@ -63,7 +63,7 @@ import json_25_strefy_zakazu_parkowania from './data2/25_strefy_zakazu_parkowani
 
 import LAYER_CONFIGS from './layer_configs.js';
 
-/*
+
 const layers = {
   json_01_teren_lotniska,
   json_02_nawierzchnia_utwardzona,
@@ -93,12 +93,12 @@ const layers = {
   json_25_strefy_zakazu_parkowania,
   //json_26_strefy_stanowisk_postojowych,
   //json_27_miejsca_parkingowe,
-};*/
-
+};
+/*
 const layers = {
   json_01_teren_lotniska,
 };
-
+*/
 
 
 
@@ -234,18 +234,7 @@ class App extends Component {
 
     let dataToDisplay = [];
     let geojsonsConfig = generateConfig();
-    for (let i = LAYER_CONFIGS.length - 1; i >= 0; --i) {
-      dataToDisplay.push({
-        info: {label: LAYER_CONFIGS[i].file, id: LAYER_CONFIGS[i].file},
-        data: Processors.processGeojson(layers[LAYER_CONFIGS[i].file])
-      });
-    }
 
-    this.props.dispatch(updateVisData(dataToDisplay, null, geojsonsConfig));
-
-    let newConfig = {}
-    newConfig.layers = geojsonsConfig.layers.concat(savedMapConfig.config.visState.layers);
-    newConfig.filters = [];
     dataToDisplay.push({
       info: {
         label: 'Icon Data',
@@ -253,6 +242,48 @@ class App extends Component {
       },
       data: Processors.processCsvData(sampleIconCsv)
     });
+
+
+    for (let i = LAYER_CONFIGS.length - 1; i >= 0; --i) {
+      dataToDisplay.push({
+        info: {label: LAYER_CONFIGS[i].file, id: LAYER_CONFIGS[i].file},
+        data: Processors.processGeojson(layers[LAYER_CONFIGS[i].file])
+      });
+    }
+
+
+
+
+    //this.props.dispatch(updateVisData(dataToDisplay, null, geojsonsConfig));
+
+    let newConfig = {}
+    geojsonsConfig.layers.unshift(savedMapConfig.config.visState.layers[0]);
+    newConfig.layers = [...geojsonsConfig.layers];
+    newConfig.layers.unshift(savedMapConfig.config.visState.layers[0]);
+    newConfig.filters = [/*{
+          "dataId": "test_icon_data",
+          "id": "hfd1avj8",
+          "name": "type",
+          "type": "multiSelect",
+          "value": [
+            "moj_typ"
+          ],
+          "enlarged": false,
+          "plotType": "histogram",
+          "yAxis": null
+        }*/];
+    console.log('wololo');
+    console.log(newConfig);
+
+    this.props.dispatch(
+      updateVisData(
+        dataToDisplay,
+        {
+          centerMap: true
+        },
+        newConfig
+      )
+    );
 
 /*
     setTimeout(() => {
@@ -268,6 +299,9 @@ class App extends Component {
     },5000);
 */
 
+    let directionX = 0.0001;
+    let directionY = 0.0001;
+    let sign = 0;
     setInterval(() => {
     //  this.props.dispatch(removeLayer(0));
 
@@ -280,10 +314,14 @@ class App extends Component {
           newConfig
         )
       );
-      dataToDisplay[dataToDisplay.length - 1].data.rows[0][0] += 0.0001;
-      dataToDisplay[dataToDisplay.length - 1].data.rows[0][1] += 0.0001;
-
-    }, 3000);
+      dataToDisplay[0].data.rows[2][0] += directionX;
+      dataToDisplay[0].data.rows[2][1] += directionY;
+      sign = (sign + 1 )%10;
+      if (sign === 0) {
+        directionX *= (-1);
+        directionY *= (-1);
+      }
+    }, 10000);
 
 
 
